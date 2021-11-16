@@ -164,7 +164,7 @@ impl<'a, H: Handler<'a>> Handler<'a> for Adapter<'a, H> {
     }
 }
 
-impl<'a, H: Handler<'a>> LambdaHandler<LambdaRequest<'a>, LambdaResponse> for Adapter<'a, H> {
+impl<'a, 'b, H: Handler<'a>> LambdaHandler<LambdaRequest<'b>, LambdaResponse> for Adapter<'a, H> {
     type Error = H::Error;
     type Fut = TransformResponse<'a, H::Response, Self::Error>;
 
